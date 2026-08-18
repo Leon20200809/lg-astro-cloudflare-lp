@@ -1,9 +1,7 @@
-<section class="section comparison">
+<section class="section section--muted comparison">
   <div class="container">
-    <div class="comparison__intro">
-      <p class="section-label">
-        今のままでいいか確認する
-      </p>
+    <div class="section-header">
+      <p class="section-label">今のままでいいか確認する</p>
 
       <h2 class="section-title">
         一度、ホームページを<br />
@@ -18,81 +16,46 @@
 
     <div class="comparison__list">
       <article class="comparison__item">
-        <p class="comparison__before">
-          なんとなくWordPressを使っている
-        </p>
-
-        <span class="comparison__arrow" aria-hidden="true">
-          →
-        </span>
-
-        <p class="comparison__after">
-          目的に合った構成へ
-        </p>
+        <p>なんとなくWordPressを使っている</p>
+        <span aria-hidden="true">→</span>
+        <strong>目的に合った構成へ</strong>
       </article>
 
       <article class="comparison__item">
-        <p class="comparison__before">
-          毎年サーバー料金を払っている
-        </p>
-
-        <span class="comparison__arrow" aria-hidden="true">
-          →
-        </span>
-
-        <p class="comparison__after">
-          0円にできる場合も
-        </p>
+        <p>毎年サーバー料金を払っている</p>
+        <span aria-hidden="true">→</span>
+        <strong>0円にできる場合も</strong>
       </article>
 
       <article class="comparison__item">
-        <p class="comparison__before">
-          システムの更新や保守が必要
-        </p>
-
-        <span class="comparison__arrow" aria-hidden="true">
-          →
-        </span>
-
-        <p class="comparison__after">
-          必要な作業だけに
-        </p>
+        <p>システムの更新や保守が必要</p>
+        <span aria-hidden="true">→</span>
+        <strong>必要な作業だけに</strong>
       </article>
 
       <article class="comparison__item">
-        <p class="comparison__before">
-          誰が何を管理しているか分からない
-        </p>
-
-        <span class="comparison__arrow" aria-hidden="true">
-          →
-        </span>
-
-        <p class="comparison__after">
-          構成を整理して見える化
-        </p>
+        <p>誰が何を管理しているか分からない</p>
+        <span aria-hidden="true">→</span>
+        <strong>構成を整理して見える化</strong>
       </article>
     </div>
   </div>
 </section>
 
 <style>
-  .comparison__intro {
-    max-width: var(--content-width-md);
-  }
-
   .comparison__list {
     display: grid;
     gap: var(--space-4);
-    margin-top: var(--space-12);
+    max-width: var(--content-width-lg);
+    margin: var(--space-12) auto 0;
   }
 
   .comparison__item {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
-    gap: var(--space-6);
+    gap: var(--space-8);
     align-items: center;
-    padding: var(--space-6);
+    padding: var(--space-6) var(--space-8);
     border: var(--border-default);
     border-radius: var(--radius-lg);
     background: var(--color-surface);
@@ -100,18 +63,15 @@
 
   .comparison__item p {
     margin: 0;
-  }
-
-  .comparison__before {
     color: var(--color-text-muted);
   }
 
-  .comparison__after {
+  .comparison__item span {
+    font-size: var(--font-size-xl);
     font-weight: var(--font-weight-bold);
   }
 
-  .comparison__arrow {
-    font-size: var(--font-size-xl);
+  .comparison__item strong {
     font-weight: var(--font-weight-bold);
   }
 
@@ -121,8 +81,9 @@
       gap: var(--space-3);
     }
 
-    .comparison__arrow {
+    .comparison__item span {
       transform: rotate(90deg);
+      transform-origin: left center;
     }
   }
 </style>

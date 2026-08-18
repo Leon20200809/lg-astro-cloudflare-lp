@@ -1,9 +1,7 @@
-<section class="section solution">
+<section class="section section--surface solution">
   <div class="container">
-    <div class="solution__intro">
-      <p class="section-label">
-        必要なものだけ残す
-      </p>
+    <div class="section-header">
+      <p class="section-label">必要なものだけ残す</p>
 
       <h2 class="section-title">
         シンプルなホームページへ。
@@ -18,49 +16,34 @@
     <div class="solution__grid">
       <article class="card">
         <h3>表示が速い</h3>
-        <p>
-          必要な情報を、できるだけ軽くシンプルに届けます。
-        </p>
+        <p>必要な情報を、できるだけ軽くシンプルに届けます。</p>
       </article>
 
       <article class="card">
         <h3>管理するものが少ない</h3>
-        <p>
-          使わない仕組みを減らし、管理の負担を小さくします。
-        </p>
+        <p>使わない仕組みを減らし、管理の負担を小さくします。</p>
       </article>
 
       <article class="card">
         <h3>更新の手間を減らせる</h3>
-        <p>
-          システムやプラグインなど、維持のためだけの作業を減らします。
-        </p>
+        <p>維持のためだけに必要な作業を減らします。</p>
       </article>
 
       <article class="card">
         <h3>費用を削減できる場合も</h3>
-        <p>
-          サイトの構成によっては、毎年のサーバー費用を抑えられます。
-        </p>
+        <p>構成によっては、毎年のサーバー費用も抑えられます。</p>
       </article>
     </div>
   </div>
 </section>
 
 <style>
-  .solution {
-    background: var(--color-surface);
-  }
-
-  .solution__intro {
-    max-width: var(--content-width-md);
-  }
-
   .solution__grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-4);
-    margin-top: var(--space-12);
+    gap: var(--space-6);
+    max-width: var(--content-width-lg);
+    margin: var(--space-12) auto 0;
   }
 
   .solution h3 {

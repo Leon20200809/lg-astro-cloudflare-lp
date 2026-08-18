@@ -2,10 +2,10 @@
   /* ========================================
    * Colors
    * ======================================== */
-  --color-bg: #f7f7f5;
+  --color-bg: #f6f7f5;
   --color-surface: #ffffff;
 
-  --color-text: #1f2933;
+  --color-text: #18212f;
   --color-text-muted: #667085;
 
   --color-border: #e5e7eb;
@@ -28,7 +28,7 @@
 
   --font-size-heading-sm: clamp(1.75rem, 3vw, 2.5rem);
   --font-size-heading-md: clamp(2rem, 4vw, 3.5rem);
-  --font-size-heading-lg: clamp(2.5rem, 7vw, 5.5rem);
+  --font-size-heading-lg: clamp(2.75rem, 7vw, 5.75rem);
 
   --font-weight-normal: 400;
   --font-weight-medium: 500;
@@ -37,14 +37,13 @@
 
   --line-height-tight: 1.1;
   --line-height-heading: 1.25;
-  --line-height-base: 1.7;
+  --line-height-base: 1.8;
 
   --letter-spacing-tight: -0.04em;
   --letter-spacing-normal: 0;
 
   /* ========================================
    * Spacing
-   *
    * 4px基準
    * ======================================== */
   --space-1: 0.25rem;
@@ -60,8 +59,9 @@
   --space-20: 5rem;
   --space-24: 6rem;
   --space-28: 7rem;
+  --space-32: 8rem;
 
-  --section-space: clamp(var(--space-16), 8vw, var(--space-28));
+  --section-space: clamp(var(--space-20), 9vw, var(--space-32));
 
   /* ========================================
    * Radius
@@ -75,12 +75,12 @@
   /* ========================================
    * Layout
    * ======================================== */
-  --container-width: 70rem;
-  --container-gutter: var(--space-4);
+  --container-width: 75rem;
+  --container-gutter: var(--space-6);
 
   --content-width-sm: 40rem;
-  --content-width-md: 47.5rem;
-  --content-width-lg: 56.25rem;
+  --content-width-md: 48rem;
+  --content-width-lg: 60rem;
 
   /* ========================================
    * Border
@@ -149,9 +149,23 @@ select {
   padding-block: var(--section-space);
 }
 
+.section--surface {
+  background: var(--color-surface);
+}
+
+.section--muted {
+  background: var(--color-bg);
+}
+
 /* ========================================
- * Shared Typography
+ * Section Heading
  * ======================================== */
+
+.section-header {
+  max-width: var(--content-width-lg);
+  margin-inline: auto;
+  text-align: center;
+}
 
 .section-label {
   margin: 0 0 var(--space-3);
@@ -165,11 +179,12 @@ select {
   font-size: var(--font-size-heading-md);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-heading);
+  letter-spacing: var(--letter-spacing-tight);
 }
 
 .section-lead {
   max-width: var(--content-width-md);
-  margin: var(--space-6) 0 0;
+  margin: var(--space-6) auto 0;
   color: var(--color-text-muted);
   font-size: var(--font-size-md);
 }
@@ -183,4 +198,48 @@ select {
   border: var(--border-default);
   border-radius: var(--radius-lg);
   background: var(--color-surface);
+}
+
+/* ========================================
+ * Shared Button
+ * ======================================== */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-full);
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+  transition: opacity var(--transition-fast);
+}
+
+.button:hover {
+  opacity: 0.8;
+}
+
+.button--primary {
+  color: var(--color-primary-text);
+  background: var(--color-primary);
+}
+
+.button--inverse {
+  color: var(--color-primary);
+  background: var(--color-primary-text);
+}
+
+/* ========================================
+ * Responsive
+ * ======================================== */
+
+@media (max-width: 40rem) {
+  :root {
+    --container-gutter: var(--space-4);
+    --section-space: var(--space-20);
+  }
+
+  .card {
+    padding: var(--space-6);
+  }
 }

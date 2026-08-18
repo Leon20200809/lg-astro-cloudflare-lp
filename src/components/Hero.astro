@@ -12,10 +12,11 @@
     <p class="hero__lead">
       サーバー代、保守費、更新費。<br />
       毎月コストがかかるホームページなら、
-      会社の信用・問い合わせ・採用のために働いていてほしいと考えます。
+      会社の信用・問い合わせ・採用のために
+      働いていてほしいと考えます。
     </p>
 
-    <a class="hero__button" href="#check">
+    <a class="button button--primary" href="#check">
       今のホームページを確認する
     </a>
   </div>
@@ -24,9 +25,10 @@
 <style>
   .hero {
     display: grid;
-    min-height: 85vh;
-    align-items: center;
+    min-height: 90vh;
+    place-items: center;
     padding-block: var(--section-space);
+    text-align: center;
   }
 
   .hero__inner {
@@ -50,24 +52,12 @@
 
   .hero__lead {
     max-width: var(--content-width-md);
-    margin: var(--space-8) 0 0;
+    margin: var(--space-8) auto 0;
     color: var(--color-text-muted);
     font-size: var(--font-size-lg);
   }
 
-  .hero__button {
-    display: inline-block;
+  .hero .button {
     margin-top: var(--space-8);
-    padding: var(--space-3) var(--space-6);
-    border-radius: var(--radius-full);
-    color: var(--color-primary-text);
-    background: var(--color-primary);
-    font-weight: var(--font-weight-bold);
-    text-decoration: none;
-    transition: opacity var(--transition-fast);
-  }
-
-  .hero__button:hover {
-    opacity: 0.8;
   }
 </style>

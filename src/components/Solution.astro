@@ -1,0 +1,81 @@
+<section class="section solution">
+  <div class="container">
+    <div class="solution__intro">
+      <p class="section-label">
+        必要なものだけ残す
+      </p>
+
+      <h2 class="section-title">
+        シンプルなホームページへ。
+      </h2>
+
+      <p class="section-lead">
+        更新頻度が低い会社案内サイトなら、
+        複雑な仕組みを持たなくてもよい場合があります。
+      </p>
+    </div>
+
+    <div class="solution__grid">
+      <article class="card">
+        <h3>表示が速い</h3>
+        <p>
+          必要な情報を、できるだけ軽くシンプルに届けます。
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>管理するものが少ない</h3>
+        <p>
+          使わない仕組みを減らし、管理の負担を小さくします。
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>更新の手間を減らせる</h3>
+        <p>
+          システムやプラグインなど、維持のためだけの作業を減らします。
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>費用を削減できる場合も</h3>
+        <p>
+          サイトの構成によっては、毎年のサーバー費用を抑えられます。
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .solution {
+    background: var(--color-surface);
+  }
+
+  .solution__intro {
+    max-width: var(--content-width-md);
+  }
+
+  .solution__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+    margin-top: var(--space-12);
+  }
+
+  .solution h3 {
+    margin: 0 0 var(--space-2);
+    font-size: var(--font-size-xl);
+  }
+
+  .solution article p {
+    margin: 0;
+    color: var(--color-text-muted);
+  }
+
+  @media (max-width: 40rem) {
+    .solution__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

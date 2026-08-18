@@ -1,0 +1,48 @@
+<section class="section problem">
+  <div class="container">
+    <div class="problem__heading">
+      <p class="section-label">
+        よくある状態
+      </p>
+
+      <h2 class="section-title">
+        ホームページを作った当時のまま、<br />
+        こんな状態になっていませんか？
+      </h2>
+    </div>
+
+    <ul class="problem__list">
+      <li>何年も内容をほとんど更新していない</li>
+      <li>誰が管理しているのか分からない</li>
+      <li>毎年サーバー代だけ払っている</li>
+      <li>問い合わせにつながっているのか分からない</li>
+      <li>「WordPressがいい」と言われたから、そのまま使っている</li>
+    </ul>
+  </div>
+</section>
+
+<style>
+  .problem {
+    background: var(--color-surface);
+  }
+
+  .problem__heading {
+    max-width: var(--content-width-md);
+  }
+
+  .problem__list {
+    display: grid;
+    gap: var(--space-4);
+    margin: var(--space-12) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .problem__list li {
+    padding: var(--space-5) var(--space-6);
+    border: var(--border-default);
+    border-radius: var(--radius-lg);
+    background: var(--color-bg);
+    font-weight: var(--font-weight-semibold);
+  }
+</style>

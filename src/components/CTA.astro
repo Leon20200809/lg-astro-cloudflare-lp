@@ -1,0 +1,56 @@
+<section id="check" class="section cta">
+  <div class="container">
+    <div class="cta__inner">
+      <p class="section-label">
+        まずは現状確認から
+      </p>
+
+      <h2 class="section-title">
+        今のホームページが、<br />
+        御社の目的に合っているか確認します。
+      </h2>
+
+      <p class="section-lead">
+        WordPressやサーバーを、無理に変更することはありません。
+        まず現状を確認し、必要なもの・不要なものを整理します。
+      </p>
+
+      <a class="cta__button" href="mailto:contact@lazygenius.dev">
+        ホームページについて相談する
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta {
+    background: var(--color-primary);
+    color: var(--color-primary-text);
+  }
+
+  .cta__inner {
+    max-width: var(--content-width-lg);
+  }
+
+  .cta :global(.section-label),
+  .cta :global(.section-lead) {
+    color: inherit;
+    opacity: 0.75;
+  }
+
+  .cta__button {
+    display: inline-block;
+    margin-top: var(--space-8);
+    padding: var(--space-3) var(--space-6);
+    border-radius: var(--radius-full);
+    color: var(--color-primary);
+    background: var(--color-primary-text);
+    font-weight: var(--font-weight-bold);
+    text-decoration: none;
+    transition: opacity var(--transition-fast);
+  }
+
+  .cta__button:hover {
+    opacity: 0.85;
+  }
+</style>

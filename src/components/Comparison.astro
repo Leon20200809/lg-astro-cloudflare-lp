@@ -1,0 +1,128 @@
+<section class="section comparison">
+  <div class="container">
+    <div class="comparison__intro">
+      <p class="section-label">
+        今のままでいいか確認する
+      </p>
+
+      <h2 class="section-title">
+        一度、ホームページを<br />
+        整理してみませんか？
+      </h2>
+
+      <p class="section-lead">
+        新しく作ることが目的ではありません。
+        今あるものを確認し、必要なものと不要なものを整理します。
+      </p>
+    </div>
+
+    <div class="comparison__list">
+      <article class="comparison__item">
+        <p class="comparison__before">
+          なんとなくWordPressを使っている
+        </p>
+
+        <span class="comparison__arrow" aria-hidden="true">
+          →
+        </span>
+
+        <p class="comparison__after">
+          目的に合った構成へ
+        </p>
+      </article>
+
+      <article class="comparison__item">
+        <p class="comparison__before">
+          毎年サーバー料金を払っている
+        </p>
+
+        <span class="comparison__arrow" aria-hidden="true">
+          →
+        </span>
+
+        <p class="comparison__after">
+          0円にできる場合も
+        </p>
+      </article>
+
+      <article class="comparison__item">
+        <p class="comparison__before">
+          システムの更新や保守が必要
+        </p>
+
+        <span class="comparison__arrow" aria-hidden="true">
+          →
+        </span>
+
+        <p class="comparison__after">
+          必要な作業だけに
+        </p>
+      </article>
+
+      <article class="comparison__item">
+        <p class="comparison__before">
+          誰が何を管理しているか分からない
+        </p>
+
+        <span class="comparison__arrow" aria-hidden="true">
+          →
+        </span>
+
+        <p class="comparison__after">
+          構成を整理して見える化
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .comparison__intro {
+    max-width: var(--content-width-md);
+  }
+
+  .comparison__list {
+    display: grid;
+    gap: var(--space-4);
+    margin-top: var(--space-12);
+  }
+
+  .comparison__item {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: var(--space-6);
+    align-items: center;
+    padding: var(--space-6);
+    border: var(--border-default);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+  }
+
+  .comparison__item p {
+    margin: 0;
+  }
+
+  .comparison__before {
+    color: var(--color-text-muted);
+  }
+
+  .comparison__after {
+    font-weight: var(--font-weight-bold);
+  }
+
+  .comparison__arrow {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+  }
+
+  @media (max-width: 40rem) {
+    .comparison__item {
+      grid-template-columns: 1fr;
+      gap: var(--space-3);
+    }
+
+    .comparison__arrow {
+      transform: rotate(90deg);
+    }
+  }
+</style>

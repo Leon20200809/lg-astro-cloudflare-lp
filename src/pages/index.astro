@@ -7,10 +7,12 @@ import Purpose from "../components/Purpose.astro";
 import Solution from "../components/Solution.astro";
 import Comparison from "../components/Comparison.astro";
 import CTA from "../components/CTA.astro";
+import Footer from "../components/Footer.astro";
 
-const title = "そのホームページ、毎月の費用に見合う働きをしていますか？";
+const title = "そのホームページ、給料分働いていますか？";
+
 const description =
-  "会社の目的に合ったホームページの形を見直し、必要なものだけを残すWebサイト改善サービスです。";
+  "ホームページの目的と現在の構成を整理し、必要なものだけを残すWebサイト改善サービスです。";
 ---
 
 <Layout title={title} description={description}>
@@ -22,4 +24,6 @@ const description =
     <Comparison />
     <CTA />
   </main>
+
+  <Footer />
 </Layout>

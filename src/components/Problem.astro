@@ -7,14 +7,53 @@
         ホームページを作った当時のまま、<br />
         こんな状態になっていませんか？
       </h2>
+
+      <p class="section-lead">
+        更新されないまま維持費だけがかかり、
+        誰も全体像を説明できないホームページは珍しくありません。
+      </p>
     </div>
 
     <ul class="problem__list">
-      <li>何年も内容をほとんど更新していない</li>
-      <li>誰が管理しているのか分からない</li>
-      <li>毎年サーバー代だけ払っている</li>
-      <li>問い合わせにつながっているのか分からない</li>
-      <li>「WordPressがいい」と言われたから、そのまま使っている</li>
+      <li class="problem__item">
+        <span class="problem__icon" aria-hidden="true">!</span>
+        <div class="problem__body">
+          <strong>何年も内容をほとんど更新していない</strong>
+          <p>会社情報やサービス内容が、今の実態とズレている可能性があります。</p>
+        </div>
+      </li>
+
+      <li class="problem__item">
+        <span class="problem__icon" aria-hidden="true">!</span>
+        <div class="problem__body">
+          <strong>誰が管理しているのか分からない</strong>
+          <p>制作会社任せのままになり、社内に把握している人がいない状態です。</p>
+        </div>
+      </li>
+
+      <li class="problem__item">
+        <span class="problem__icon" aria-hidden="true">!</span>
+        <div class="problem__body">
+          <strong>毎年サーバー代だけ払っている</strong>
+          <p>維持費はかかるのに、成果や役割が見えにくくなっています。</p>
+        </div>
+      </li>
+
+      <li class="problem__item">
+        <span class="problem__icon" aria-hidden="true">!</span>
+        <div class="problem__body">
+          <strong>問い合わせにつながっているのか分からない</strong>
+          <p>ホームページが営業や相談獲得に貢献しているか判断できません。</p>
+        </div>
+      </li>
+
+      <li class="problem__item">
+        <span class="problem__icon" aria-hidden="true">!</span>
+        <div class="problem__body">
+          <strong>「WordPressがいい」と言われたから、そのまま使っている</strong>
+          <p>仕組みを選んだ理由より、惰性で維持しているケースです。</p>
+        </div>
+      </li>
     </ul>
   </div>
 </section>
@@ -22,18 +61,64 @@
 <style>
   .problem__list {
     display: grid;
-    gap: var(--space-4);
+    gap: var(--space-5);
     max-width: var(--content-width-lg);
-    margin: var(--space-12) auto 0;
+    margin: var(--space-16) auto 0;
     padding: 0;
     list-style: none;
   }
 
-  .problem__list li {
-    padding: var(--space-5) var(--space-6);
+  .problem__item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-5);
+    align-items: start;
+    padding: var(--space-6) var(--space-8);
     border: var(--border-default);
-    border-radius: var(--radius-lg);
-    background: var(--color-bg);
-    font-weight: var(--font-weight-semibold);
+    border-radius: var(--radius-xl);
+    background: var(--color-surface-soft);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .problem__icon {
+    display: grid;
+    width: 2.25rem;
+    height: 2.25rem;
+    place-items: center;
+    border-radius: var(--radius-full);
+    color: var(--color-accent);
+    background: var(--color-accent-soft);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-heavy);
+    line-height: 1;
+  }
+
+  .problem__body strong {
+    display: block;
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-bold);
+    line-height: 1.5;
+  }
+
+  .problem__body p {
+    margin: var(--space-2) 0 0;
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+  }
+
+  @media (max-width: 40rem) {
+    .problem__list {
+      margin-top: var(--space-12);
+    }
+
+    .problem__item {
+      padding: var(--space-5) var(--space-5);
+      gap: var(--space-4);
+    }
+
+    .problem__icon {
+      width: 2rem;
+      height: 2rem;
+    }
   }
 </style>

@@ -1,0 +1,123 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <a href="/" class="footer__logo">
+        LazyGenius
+      </a>
+
+      <p class="footer__tagline">
+        必要なものだけを残し、<br />
+        Webを会社のために働く道具へ。
+      </p>
+    </div>
+
+    <nav
+      class="footer__nav"
+      aria-label="フッターナビゲーション"
+    >
+      <a href="/">トップ</a>
+      <a href="#check">ご相談</a>
+    </nav>
+
+    <div class="footer__bottom">
+      <p>
+        © {year} LazyGenius
+      </p>
+
+      <p>
+        Web改善・構成整理・軽量化
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    color: rgb(255 255 255 / 0.62);
+    background: #080f1d;
+  }
+
+  .footer__inner {
+    padding-block:
+      var(--space-16)
+      var(--space-8);
+  }
+
+  .footer__brand {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-12);
+  }
+
+  .footer__logo {
+    color: var(--color-primary-text);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-heavy);
+    letter-spacing: var(--letter-spacing-tight);
+    text-decoration: none;
+  }
+
+  .footer__tagline {
+    max-width: var(--content-width-sm);
+    margin: 0;
+    font-size: var(--font-size-sm);
+    text-align: right;
+  }
+
+  .footer__nav {
+    display: flex;
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+  }
+
+  .footer__nav a {
+    color: var(--color-primary-text);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    text-decoration: none;
+  }
+
+  .footer__nav a:hover {
+    text-decoration: underline;
+  }
+
+  .footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+    padding-top: var(--space-6);
+    border-top: 1px solid rgb(255 255 255 / 0.1);
+    font-size: var(--font-size-xs);
+  }
+
+  .footer__bottom p {
+    margin: 0;
+  }
+
+  @media (max-width: 40rem) {
+    .footer__brand {
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+
+    .footer__tagline {
+      text-align: left;
+    }
+
+    .footer__nav {
+      margin-top: var(--space-8);
+    }
+
+    .footer__bottom {
+      flex-direction: column;
+      gap: var(--space-2);
+      margin-top: var(--space-8);
+    }
+  }
+</style>

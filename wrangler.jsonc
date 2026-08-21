@@ -1,7 +1,19 @@
 {
+  "$schema": "./node_modules/wrangler/config-schema.json",
+
   "name": "lg-astro-cloudflare-lp",
+
+  "main": "src/worker/index.ts",
+
   "compatibility_date": "2026-08-18",
+
   "assets": {
     "directory": "./dist",
+    "run_worker_first": ["/api/*"],
+  },
+
+  "vars": {
+    "CONTACT_TO": "contact@lazygenius.dev",
+    "CONTACT_FROM": "contact@lazygenius.dev",
   },
 }

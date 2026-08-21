@@ -2,16 +2,23 @@
   /* ========================================
    * Colors
    * ======================================== */
-  --color-bg: #f6f7f5;
+  --color-bg: #f4f6f8;
   --color-surface: #ffffff;
+  --color-surface-soft: #f8fafc;
 
-  --color-text: #18212f;
+  --color-text: #172033;
   --color-text-muted: #667085;
+  --color-text-soft: #98a2b3;
 
-  --color-border: #e5e7eb;
+  --color-border: #e4e7ec;
+  --color-border-strong: #d0d5dd;
 
-  --color-primary: #111827;
+  --color-primary: #101828;
+  --color-primary-hover: #1d2939;
   --color-primary-text: #ffffff;
+
+  --color-accent: #2563eb;
+  --color-accent-soft: #eff6ff;
 
   /* ========================================
    * Typography
@@ -25,26 +32,28 @@
   --font-size-md: 1.125rem;
   --font-size-lg: 1.25rem;
   --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
 
   --font-size-heading-sm: clamp(1.75rem, 3vw, 2.5rem);
-  --font-size-heading-md: clamp(2rem, 4vw, 3.5rem);
-  --font-size-heading-lg: clamp(2.75rem, 7vw, 5.75rem);
+  --font-size-heading-md: clamp(2.25rem, 4vw, 3.75rem);
+  --font-size-heading-lg: clamp(3rem, 7vw, 6rem);
 
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
+  --font-weight-heavy: 800;
 
-  --line-height-tight: 1.1;
+  --line-height-tight: 1.08;
   --line-height-heading: 1.25;
   --line-height-base: 1.8;
 
-  --letter-spacing-tight: -0.04em;
-  --letter-spacing-normal: 0;
+  --letter-spacing-tight: -0.045em;
+  --letter-spacing-heading: -0.025em;
 
   /* ========================================
    * Spacing
-   * 4px基準
+   * 4px base scale
    * ======================================== */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
@@ -60,8 +69,10 @@
   --space-24: 6rem;
   --space-28: 7rem;
   --space-32: 8rem;
+  --space-36: 9rem;
+  --space-40: 10rem;
 
-  --section-space: clamp(var(--space-20), 9vw, var(--space-32));
+  --section-space: clamp(var(--space-24), 11vw, var(--space-40));
 
   /* ========================================
    * Radius
@@ -70,29 +81,42 @@
   --radius-md: 0.75rem;
   --radius-lg: 1rem;
   --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
   --radius-full: 9999px;
 
   /* ========================================
    * Layout
    * ======================================== */
-  --container-width: 75rem;
-  --container-gutter: var(--space-6);
+  --container-width: 76rem;
+  --container-gutter: var(--space-8);
 
   --content-width-sm: 40rem;
   --content-width-md: 48rem;
-  --content-width-lg: 60rem;
+  --content-width-lg: 62rem;
 
   /* ========================================
    * Border
    * ======================================== */
   --border-width: 1px;
+
   --border-default: var(--border-width) solid var(--color-border);
+
+  --border-strong: var(--border-width) solid var(--color-border-strong);
+
+  /* ========================================
+   * Shadow
+   * ======================================== */
+  --shadow-sm: 0 1px 2px rgb(16 24 40 / 0.04);
+
+  --shadow-md: 0 8px 24px rgb(16 24 40 / 0.06);
+
+  --shadow-lg: 0 24px 64px rgb(16 24 40 / 0.08);
 
   /* ========================================
    * Motion
    * ======================================== */
-  --transition-fast: 150ms ease;
-  --transition-base: 250ms ease;
+  --transition-fast: 160ms ease;
+  --transition-base: 240ms ease;
 }
 
 /* ========================================
@@ -117,9 +141,12 @@ body {
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
   line-height: var(--line-height-base);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 img,
+picture,
 svg {
   display: block;
   max-width: 100%;
@@ -134,6 +161,16 @@ input,
 textarea,
 select {
   font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: var(--space-1);
 }
 
 /* ========================================
@@ -168,18 +205,29 @@ select {
 }
 
 .section-label {
-  margin: 0 0 var(--space-3);
-  color: var(--color-text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-4);
+  color: var(--color-accent);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-bold);
+  letter-spacing: 0.04em;
+}
+
+.section-label::before {
+  width: var(--space-6);
+  height: 2px;
+  background: currentColor;
+  content: "";
 }
 
 .section-title {
   margin: 0;
   font-size: var(--font-size-heading-md);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-heavy);
   line-height: var(--line-height-heading);
-  letter-spacing: var(--letter-spacing-tight);
+  letter-spacing: var(--letter-spacing-heading);
 }
 
 .section-lead {
@@ -190,14 +238,25 @@ select {
 }
 
 /* ========================================
- * Shared Surface
+ * Shared Card
  * ======================================== */
 
 .card {
-  padding: var(--space-8);
+  padding: var(--space-10);
   border: var(--border-default);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  transition:
+    border-color var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-base);
+}
+
+.card:hover {
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
 }
 
 /* ========================================
@@ -206,27 +265,56 @@ select {
 
 .button {
   display: inline-flex;
+  min-height: 3.25rem;
   align-items: center;
   justify-content: center;
-  padding: var(--space-3) var(--space-6);
+  padding-inline: var(--space-8);
+  border: 0;
   border-radius: var(--radius-full);
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-bold);
+  line-height: 1;
   text-decoration: none;
-  transition: opacity var(--transition-fast);
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
 }
 
 .button:hover {
-  opacity: 0.8;
+  transform: translateY(-2px);
 }
 
 .button--primary {
   color: var(--color-primary-text);
   background: var(--color-primary);
+  box-shadow: var(--shadow-md);
+}
+
+.button--primary:hover {
+  background: var(--color-primary-hover);
+  box-shadow: var(--shadow-lg);
 }
 
 .button--inverse {
   color: var(--color-primary);
   background: var(--color-primary-text);
+  box-shadow: var(--shadow-md);
+}
+
+/* ========================================
+ * Accent utilities
+ * ======================================== */
+
+.accent {
+  color: var(--color-accent);
+}
+
+.accent-panel {
+  border: var(--border-default);
+  border-radius: var(--radius-xl);
+  background: var(--color-accent-soft);
 }
 
 /* ========================================
@@ -236,10 +324,37 @@ select {
 @media (max-width: 40rem) {
   :root {
     --container-gutter: var(--space-4);
-    --section-space: var(--space-20);
+
+    --section-space: var(--space-24);
+
+    --font-size-heading-lg: clamp(2.5rem, 12vw, 4rem);
+
+    --font-size-heading-md: clamp(2rem, 9vw, 3rem);
   }
 
   .card {
     padding: var(--space-6);
+    border-radius: var(--radius-lg);
+  }
+
+  .section-label::before {
+    width: var(--space-4);
+  }
+
+  .button {
+    min-height: 3rem;
+    padding-inline: var(--space-6);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
   }
 }

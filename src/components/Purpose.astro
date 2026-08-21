@@ -10,34 +10,78 @@
 
       <p class="section-lead">
         会社によって、ホームページに求める役割は違います。
-        目的が違えば、必要な仕組みも変わります。
+        まず「何のために存在するのか」を整理するところから始めます。
       </p>
     </div>
 
     <div class="purpose__grid">
-      <article class="card">
-        <span class="purpose__number">01</span>
+      <article class="purpose-card">
+        <div class="purpose-card__top">
+          <span class="purpose-card__number">01</span>
+          <span class="purpose-card__icon" aria-hidden="true">✓</span>
+        </div>
+
         <h3>信用</h3>
-        <p>会社の存在や事業内容を、安心して確認してもらう。</p>
+
+        <p>
+          会社が実在し、どんな仕事をしているのか。
+          初めて御社を知った人が安心して確認できる場所にします。
+        </p>
       </article>
 
-      <article class="card">
-        <span class="purpose__number">02</span>
+      <article class="purpose-card">
+        <div class="purpose-card__top">
+          <span class="purpose-card__number">02</span>
+          <span class="purpose-card__icon" aria-hidden="true">→</span>
+        </div>
+
         <h3>問い合わせ</h3>
-        <p>商品やサービスに興味を持った人を相談につなげる。</p>
+
+        <p>
+          商品やサービスに興味を持った人を、
+          電話・相談・見積依頼など次の行動につなげます。
+        </p>
       </article>
 
-      <article class="card">
-        <span class="purpose__number">03</span>
+      <article class="purpose-card">
+        <div class="purpose-card__top">
+          <span class="purpose-card__number">03</span>
+          <span class="purpose-card__icon" aria-hidden="true">+</span>
+        </div>
+
         <h3>採用</h3>
-        <p>求職者に会社の仕事や考え方を知ってもらう。</p>
+
+        <p>
+          求職者に仕事内容や会社の考え方を伝え、
+          「ここで働きたい」と思える判断材料を届けます。
+        </p>
       </article>
 
-      <article class="card">
-        <span class="purpose__number">04</span>
+      <article class="purpose-card">
+        <div class="purpose-card__top">
+          <span class="purpose-card__number">04</span>
+          <span class="purpose-card__icon" aria-hidden="true">i</span>
+        </div>
+
         <h3>情報提供</h3>
-        <p>商品・サービス・営業時間など必要な情報を届ける。</p>
+
+        <p>
+          事業内容、営業時間、所在地など、
+          お客様が知りたい情報へ迷わずたどり着けるようにします。
+        </p>
       </article>
+    </div>
+
+    <div class="purpose__summary">
+      <p class="purpose__summary-label">
+        だから、最初に目的を決めます。
+      </p>
+
+      <p class="purpose__summary-text">
+        目的が決まれば、
+        <strong>必要なページ・機能・更新方法</strong>
+        も自然に見えてきます。
+      </p>
     </div>
   </div>
 </section>
@@ -48,28 +92,109 @@
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-6);
     max-width: var(--content-width-lg);
-    margin: var(--space-12) auto 0;
+    margin: var(--space-16) auto 0;
   }
 
-  .purpose__number {
-    color: var(--color-text-muted);
+  .purpose-card {
+    min-height: 17rem;
+    padding: var(--space-10);
+    border: var(--border-default);
+    border-radius: var(--radius-xl);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+    transition:
+      border-color var(--transition-base),
+      box-shadow var(--transition-base),
+      transform var(--transition-base);
+  }
+
+  .purpose-card:hover {
+    border-color: var(--color-border-strong);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+
+  .purpose-card__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .purpose-card__number {
+    color: var(--color-text-soft);
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-bold);
   }
 
-  .purpose h3 {
-    margin: var(--space-4) 0 var(--space-2);
-    font-size: var(--font-size-xl);
+  .purpose-card__icon {
+    display: grid;
+    width: 3rem;
+    height: 3rem;
+    place-items: center;
+    border-radius: var(--radius-full);
+    color: var(--color-accent);
+    background: var(--color-accent-soft);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-heavy);
   }
 
-  .purpose article p {
+  .purpose-card h3 {
+    margin: var(--space-8) 0 var(--space-3);
+    font-size: var(--font-size-2xl);
+    line-height: var(--line-height-heading);
+  }
+
+  .purpose-card p {
     margin: 0;
     color: var(--color-text-muted);
+  }
+
+  .purpose__summary {
+    max-width: var(--content-width-md);
+    margin: var(--space-12) auto 0;
+    padding: var(--space-6) var(--space-8);
+    border: var(--border-default);
+    border-radius: var(--radius-xl);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+  }
+
+  .purpose__summary-label {
+    margin: 0;
+    color: var(--color-accent);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .purpose__summary-text {
+    margin: var(--space-2) 0 0;
+    color: var(--color-text-muted);
+    font-size: var(--font-size-md);
+  }
+
+  .purpose__summary-text strong {
+    color: var(--color-text);
+    font-weight: var(--font-weight-bold);
   }
 
   @media (max-width: 40rem) {
     .purpose__grid {
       grid-template-columns: 1fr;
+      margin-top: var(--space-12);
+    }
+
+    .purpose-card {
+      min-height: auto;
+      padding: var(--space-6);
+    }
+
+    .purpose-card h3 {
+      margin-top: var(--space-6);
+    }
+
+    .purpose__summary {
+      padding: var(--space-5);
     }
   }
 </style>

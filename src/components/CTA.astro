@@ -1,7 +1,9 @@
 <section id="check" class="section cta">
   <div class="container">
     <div class="cta__inner">
-      <p class="cta__label">まずは現状確認から</p>
+      <p class="cta__label">
+        まずは現状確認から
+      </p>
 
       <h2 class="cta__title">
         今のホームページが、<br />
@@ -10,53 +12,499 @@
 
       <p class="cta__lead">
         WordPressやサーバーを無理に変更することはありません。
-        まず現状を確認し、必要なもの・不要なものを整理します。
+        現状を確認し、必要なもの・不要なものを整理したうえで、
+        御社に合った方法をご提案します。
       </p>
 
-      <a
-        class="button button--inverse"
-        href="mailto:contact@lazygenius.dev"
-      >
-        ホームページについて相談する
-      </a>
+      <div class="cta__steps">
+        <div class="cta__step">
+          <span class="cta__step-number">01</span>
+
+          <div>
+            <strong>現在の構成を確認</strong>
+            <p>
+              サーバー、WordPress、更新状況など、
+              今どうなっているかを整理します。
+            </p>
+          </div>
+        </div>
+
+        <div class="cta__step">
+          <span class="cta__step-number">02</span>
+
+          <div>
+            <strong>目的を確認</strong>
+            <p>
+              信用、問い合わせ、採用など、
+              ホームページに何をしてほしいのかを整理します。
+            </p>
+          </div>
+        </div>
+
+        <div class="cta__step">
+          <span class="cta__step-number">03</span>
+
+          <div>
+            <strong>必要な改善だけ提案</strong>
+            <p>
+              全面リニューアルありきではなく、
+              必要なところだけ改善します。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact">
+        <div class="contact__header">
+          <p class="contact__label">
+            CONTACT
+          </p>
+
+          <h3>
+            ホームページについて相談する
+          </h3>
+
+          <p>
+            まずは今のホームページを見せてください。
+            相談内容がまだ整理できていなくても大丈夫です。
+          </p>
+        </div>
+
+        <form
+          class="contact__form"
+          action="/api/contact"
+          method="post"
+          data-contact-form
+        >
+          <div class="contact__field">
+            <label for="company">
+              会社名
+            </label>
+
+            <input
+              id="company"
+              name="company"
+              type="text"
+              autocomplete="organization"
+              maxlength="100"
+            />
+          </div>
+
+          <div class="contact__field">
+            <label for="name">
+              お名前
+              <span>必須</span>
+            </label>
+
+            <input
+              id="name"
+              name="name"
+              type="text"
+              autocomplete="name"
+              maxlength="100"
+              required
+            />
+          </div>
+
+          <div class="contact__field">
+            <label for="email">
+              メールアドレス
+              <span>必須</span>
+            </label>
+
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              maxlength="254"
+              required
+            />
+          </div>
+
+          <div class="contact__field">
+            <label for="siteUrl">
+              現在のホームページURL
+            </label>
+
+            <input
+              id="siteUrl"
+              name="siteUrl"
+              type="url"
+              inputmode="url"
+              autocomplete="url"
+              maxlength="500"
+              placeholder="https://example.com"
+            />
+          </div>
+
+          <div class="contact__field contact__field--full">
+            <label for="message">
+              ご相談内容
+              <span>必須</span>
+            </label>
+
+            <textarea
+              id="message"
+              name="message"
+              rows="7"
+              maxlength="3000"
+              required
+              placeholder="例：数年前に作ったホームページをそのまま使っています。今の構成が適切か一度見てほしいです。"
+            ></textarea>
+          </div>
+
+          <!-- Bot対策用。人間には表示しない -->
+          <div
+            class="contact__trap"
+            aria-hidden="true"
+          >
+            <label for="_gotcha">
+              この項目は入力しないでください
+            </label>
+
+            <input
+              id="_gotcha"
+              name="_gotcha"
+              type="text"
+              tabindex="-1"
+              autocomplete="off"
+            />
+          </div>
+
+          <div class="contact__submit">
+            <button
+              class="button button--primary"
+              type="submit"
+            >
+              相談内容を送信する
+              <span aria-hidden="true">→</span>
+            </button>
+
+            <p
+              class="contact__status"
+              data-contact-status
+              aria-live="polite"
+            ></p>
+
+            <p class="contact__note">
+              送信いただいた情報は、お問い合わせへの対応にのみ使用します。
+            </p>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </section>
 
+<script>
+  const form = document.querySelector<HTMLFormElement>(
+    "[data-contact-form]",
+  );
+
+  const status = document.querySelector<HTMLElement>(
+    "[data-contact-status]",
+  );
+
+  if (form && status) {
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const button =
+        form.querySelector<HTMLButtonElement>(
+          'button[type="submit"]',
+        );
+
+      if (!button) {
+        return;
+      }
+
+      const originalText = button.innerHTML;
+
+      button.disabled = true;
+      button.textContent = "送信中...";
+      status.textContent = "";
+
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: new FormData(form),
+          headers: {
+            Accept: "application/json",
+          },
+        });
+
+        const result = await response
+          .json()
+          .catch(() => null);
+
+        if (!response.ok) {
+          throw new Error(
+            result?.message ??
+              "送信に失敗しました。",
+          );
+        }
+
+        form.reset();
+
+        status.textContent =
+          result?.message ??
+          "お問い合わせを受け付けました。";
+      } catch (error) {
+        status.textContent =
+          error instanceof Error
+            ? error.message
+            : "送信に失敗しました。時間をおいて再度お試しください。";
+      } finally {
+        button.disabled = false;
+        button.innerHTML = originalText;
+      }
+    });
+  }
+</script>
+
 <style>
   .cta {
+    position: relative;
+    overflow: hidden;
     color: var(--color-primary-text);
-    background: var(--color-primary);
+    background:
+      radial-gradient(
+        circle at 50% 0%,
+        rgb(37 99 235 / 0.18),
+        transparent 40%
+      ),
+      var(--color-primary);
   }
 
   .cta__inner {
     max-width: var(--content-width-lg);
     margin-inline: auto;
-    text-align: center;
   }
 
   .cta__label {
-    margin: 0 0 var(--space-3);
+    margin: 0 0 var(--space-5);
+    color: #93c5fd;
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-bold);
-    opacity: 0.7;
+    letter-spacing: 0.05em;
+    text-align: center;
   }
 
   .cta__title {
     margin: 0;
     font-size: var(--font-size-heading-md);
+    font-weight: var(--font-weight-heavy);
     line-height: var(--line-height-heading);
-    letter-spacing: var(--letter-spacing-tight);
+    letter-spacing: var(--letter-spacing-heading);
+    text-align: center;
+    text-wrap: balance;
   }
 
   .cta__lead {
     max-width: var(--content-width-md);
-    margin: var(--space-6) auto 0;
+    margin: var(--space-8) auto 0;
+    color: rgb(255 255 255 / 0.72);
     font-size: var(--font-size-md);
-    opacity: 0.75;
+    text-align: center;
   }
 
-  .cta .button {
-    margin-top: var(--space-8);
+  .cta__steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-5);
+    margin-top: var(--space-12);
+  }
+
+  .cta__step {
+    padding: var(--space-6);
+    border: 1px solid rgb(255 255 255 / 0.12);
+    border-radius: var(--radius-xl);
+    background: rgb(255 255 255 / 0.05);
+  }
+
+  .cta__step-number {
+    display: inline-block;
+    margin-bottom: var(--space-5);
+    color: #93c5fd;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-heavy);
+    letter-spacing: 0.08em;
+  }
+
+  .cta__step strong {
+    display: block;
+    font-size: var(--font-size-md);
+  }
+
+  .cta__step p {
+    margin: var(--space-2) 0 0;
+    color: rgb(255 255 255 / 0.62);
+    font-size: var(--font-size-sm);
+  }
+
+  /* ========================================
+   * Contact
+   * ======================================== */
+
+  .contact {
+    margin-top: var(--space-16);
+    padding: var(--space-12);
+    border-radius: var(--radius-2xl);
+    color: var(--color-text);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .contact__header {
+    max-width: var(--content-width-md);
+  }
+
+  .contact__label {
+    margin: 0 0 var(--space-3);
+    color: var(--color-accent);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-heavy);
+    letter-spacing: 0.1em;
+  }
+
+  .contact__header h3 {
+    margin: 0;
+    font-size: var(--font-size-2xl);
+    line-height: var(--line-height-heading);
+  }
+
+  .contact__header > p:last-child {
+    margin: var(--space-3) 0 0;
+    color: var(--color-text-muted);
+  }
+
+  .contact__form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+    margin-top: var(--space-10);
+  }
+
+  .contact__field {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .contact__field--full,
+  .contact__submit {
+    grid-column: 1 / -1;
+  }
+
+  .contact__field label {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .contact__field label span {
+    margin-left: var(--space-2);
+    color: var(--color-accent);
+    font-size: var(--font-size-xs);
+  }
+
+  .contact__field input,
+  .contact__field textarea {
+    width: 100%;
+    border: var(--border-strong);
+    border-radius: var(--radius-md);
+    color: var(--color-text);
+    background: var(--color-surface);
+    transition:
+      border-color var(--transition-fast),
+      box-shadow var(--transition-fast);
+  }
+
+  .contact__field input {
+    min-height: 3.25rem;
+    padding-inline: var(--space-4);
+  }
+
+  .contact__field textarea {
+    min-height: 12rem;
+    padding: var(--space-4);
+    resize: vertical;
+  }
+
+  .contact__field input:focus,
+  .contact__field textarea:focus {
+    border-color: var(--color-accent);
+    outline: none;
+    box-shadow:
+      0 0 0 3px
+      rgb(37 99 235 / 0.12);
+  }
+
+  .contact__field input::placeholder,
+  .contact__field textarea::placeholder {
+    color: var(--color-text-soft);
+  }
+
+  .contact__trap {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .contact__submit {
+    margin-top: var(--space-4);
+    text-align: center;
+  }
+
+  .contact__submit .button {
+    gap: var(--space-4);
+  }
+
+  .contact__submit .button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+    transform: none;
+  }
+
+  .contact__status {
+    min-height: 1.5em;
+    margin: var(--space-4) 0 0;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .contact__note {
+    margin: var(--space-3) 0 0;
+    color: var(--color-text-muted);
+    font-size: var(--font-size-xs);
+  }
+
+  @media (max-width: 48rem) {
+    .cta__steps,
+    .contact__form {
+      grid-template-columns: 1fr;
+    }
+
+    .contact__field--full,
+    .contact__submit {
+      grid-column: auto;
+    }
+
+    .contact {
+      padding: var(--space-8);
+    }
+  }
+
+  @media (max-width: 40rem) {
+    .contact {
+      margin-top: var(--space-12);
+      padding: var(--space-6);
+      border-radius: var(--radius-xl);
+    }
+
+    .contact__form {
+      margin-top: var(--space-8);
+    }
   }
 </style>

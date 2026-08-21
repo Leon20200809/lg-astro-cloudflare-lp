@@ -90,18 +90,18 @@
   .purpose__grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-6);
+    gap: 1px;
     max-width: var(--content-width-lg);
     margin: var(--space-16) auto 0;
   }
 
   .purpose-card {
-    min-height: 17rem;
+    position: relative;
+    min-height: 18rem;
     padding: var(--space-10);
-    border: var(--border-default);
-    border-radius: var(--radius-xl);
+    border: 0;
     background: var(--color-surface);
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 0 0 1px var(--color-border);
     transition:
       border-color var(--transition-base),
       box-shadow var(--transition-base),
@@ -109,9 +109,9 @@
   }
 
   .purpose-card:hover {
-    border-color: var(--color-border-strong);
-    box-shadow: var(--shadow-md);
-    transform: translateY(-2px);
+    z-index: 1;
+    box-shadow: 0 0 0 1px var(--color-border-strong), var(--shadow-md);
+    transform: translateY(-1px);
   }
 
   .purpose-card__top {
@@ -121,15 +121,15 @@
   }
 
   .purpose-card__number {
-    color: var(--color-text-soft);
+    color: var(--color-accent);
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-bold);
   }
 
   .purpose-card__icon {
     display: grid;
-    width: 3rem;
-    height: 3rem;
+    width: 2.75rem;
+    height: 2.75rem;
     place-items: center;
     border-radius: var(--radius-full);
     color: var(--color-accent);
@@ -153,11 +153,12 @@
     max-width: var(--content-width-md);
     margin: var(--space-12) auto 0;
     padding: var(--space-6) var(--space-8);
-    border: var(--border-default);
+    border: 0;
+    border-left: 3px solid var(--color-accent);
     border-radius: var(--radius-xl);
     background: var(--color-surface);
-    box-shadow: var(--shadow-sm);
-    text-align: center;
+    box-shadow: var(--shadow-md);
+    text-align: left;
   }
 
   .purpose__summary-label {
@@ -182,6 +183,7 @@
     .purpose__grid {
       grid-template-columns: 1fr;
       margin-top: var(--space-12);
+      gap: var(--space-4);
     }
 
     .purpose-card {

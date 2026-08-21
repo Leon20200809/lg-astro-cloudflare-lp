@@ -61,7 +61,8 @@
 <style>
   .problem__list {
     display: grid;
-    gap: var(--space-5);
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
     max-width: var(--content-width-lg);
     margin: var(--space-16) auto 0;
     padding: 0;
@@ -73,17 +74,18 @@
     grid-template-columns: auto 1fr;
     gap: var(--space-5);
     align-items: start;
-    padding: var(--space-6) var(--space-8);
+    min-height: 10rem;
+    padding: var(--space-8);
     border: var(--border-default);
     border-radius: var(--radius-xl);
-    background: var(--color-surface-soft);
-    box-shadow: var(--shadow-sm);
+    border-top: 3px solid var(--color-accent);
+    background: var(--color-surface);
   }
 
   .problem__icon {
     display: grid;
-    width: 2.25rem;
-    height: 2.25rem;
+    width: 2rem;
+    height: 2rem;
     place-items: center;
     border-radius: var(--radius-full);
     color: var(--color-accent);
@@ -108,10 +110,12 @@
 
   @media (max-width: 40rem) {
     .problem__list {
+      grid-template-columns: 1fr;
       margin-top: var(--space-12);
     }
 
     .problem__item {
+      min-height: auto;
       padding: var(--space-5) var(--space-5);
       gap: var(--space-4);
     }

@@ -98,7 +98,7 @@
     border: var(--border-default);
     border-radius: var(--radius-xl);
     background: var(--color-surface);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-lg);
   }
 
   .comparison__header,
@@ -115,7 +115,7 @@
   .comparison__header {
     padding: var(--space-5) var(--space-8);
     color: var(--color-text-muted);
-    background: var(--color-surface-soft);
+    background: linear-gradient(90deg, var(--color-surface-soft) 0 48%, var(--color-accent-soft) 48% 100%);
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-bold);
   }
@@ -128,6 +128,7 @@
     min-height: 6rem;
     padding: var(--space-6) var(--space-8);
     border-top: var(--border-default);
+    background: linear-gradient(90deg, var(--color-surface) 0 48%, #f7fbff 48% 100%);
   }
 
   .comparison__row p {
@@ -139,6 +140,7 @@
     color: var(--color-text);
     font-size: var(--font-size-md);
     font-weight: var(--font-weight-bold);
+    padding-left: var(--space-2);
   }
 
   .comparison__arrow {
@@ -159,11 +161,11 @@
     gap: var(--space-6);
     align-items: start;
     margin-top: var(--space-10);
-    padding: var(--space-8);
+    padding: var(--space-10);
     border-radius: var(--radius-xl);
     color: var(--color-primary-text);
-    background: var(--color-primary);
-    box-shadow: var(--shadow-md);
+    background: linear-gradient(135deg, var(--color-primary), #122f53);
+    box-shadow: var(--shadow-lg);
   }
 
   .comparison__point-label {
@@ -206,6 +208,7 @@
       gap: var(--space-3);
       min-height: auto;
       padding: var(--space-6);
+      background: var(--color-surface);
     }
 
     .comparison__arrow {
@@ -218,6 +221,12 @@
       grid-template-columns: 1fr;
       gap: var(--space-4);
       padding: var(--space-6);
+    }
+
+    .comparison__row strong {
+      padding: var(--space-3) var(--space-4);
+      border-radius: var(--radius-sm);
+      background: var(--color-accent-soft);
     }
   }
 </style>

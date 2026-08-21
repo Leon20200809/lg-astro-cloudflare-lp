@@ -42,8 +42,8 @@ import heroImage from "../assets/images/hero.webp";
   .hero {
     position: relative;
     display: grid;
-    min-height: 92vh;
-    place-items: center;
+    min-height: min(92vh, 58rem);
+    align-items: center;
     overflow: hidden;
     color: var(--color-primary-text);
     background: var(--color-primary);
@@ -61,19 +61,16 @@ import heroImage from "../assets/images/hero.webp";
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(
-        180deg,
-        rgb(10 18 32 / 0.48),
-        rgb(10 18 32 / 0.78)
-      );
+      linear-gradient(90deg, rgb(6 16 30 / 0.94) 0%, rgb(6 16 30 / 0.8) 45%, rgb(6 16 30 / 0.25) 100%),
+      linear-gradient(180deg, rgb(6 16 30 / 0.15), rgb(6 16 30 / 0.62));
   }
 
   .hero__inner {
     position: relative;
     z-index: 1;
-    max-width: var(--content-width-lg);
+    max-width: var(--container-width);
     padding-block: var(--section-space);
-    text-align: center;
+    text-align: left;
   }
 
   .hero__eyebrow {
@@ -81,7 +78,8 @@ import heroImage from "../assets/images/hero.webp";
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-bold);
     letter-spacing: 0.08em;
-    opacity: 0.82;
+    color: #b9d8ff;
+    opacity: 1;
   }
 
   .hero__title {
@@ -90,19 +88,24 @@ import heroImage from "../assets/images/hero.webp";
     font-weight: var(--font-weight-heavy);
     line-height: var(--line-height-tight);
     letter-spacing: var(--letter-spacing-tight);
+    max-width: 12ch;
     text-wrap: balance;
+    text-shadow: 0 2px 24px rgb(0 0 0 / 0.22);
   }
 
   .hero__lead {
-    max-width: var(--content-width-md);
-    margin: var(--space-8) auto 0;
+    max-width: 42rem;
+    margin: var(--space-8) 0 0;
     font-size: var(--font-size-lg);
     text-wrap: balance;
-    opacity: 0.88;
+    line-height: 1.9;
+    opacity: 0.9;
   }
 
   .hero .button {
     margin-top: var(--space-10);
+    min-width: 18rem;
+    box-shadow: 0 12px 36px rgb(0 0 0 / 0.26);
   }
 
   @media (max-width: 40rem) {
@@ -112,6 +115,19 @@ import heroImage from "../assets/images/hero.webp";
 
     .hero__lead br {
       display: none;
+    }
+
+    .hero__overlay {
+      background: linear-gradient(180deg, rgb(6 16 30 / 0.58), rgb(6 16 30 / 0.94));
+    }
+
+    .hero__title {
+      max-width: 10ch;
+    }
+
+    .hero .button {
+      width: 100%;
+      min-width: 0;
     }
   }
 </style>

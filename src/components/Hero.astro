@@ -18,7 +18,7 @@ import heroImage from "../assets/images/hero.webp";
 
   <div class="container hero__inner">
     <p class="hero__eyebrow">
-      ホームページの費用対効果、見直してみませんか？
+      Web専任者がいない中小企業のための、Web環境整理
     </p>
 
     <h1 class="hero__title">
@@ -27,9 +27,9 @@ import heroImage from "../assets/images/hero.webp";
     </h1>
 
     <p class="hero__lead">
-      サーバー代、保守費、更新費。<br />
-      毎月コストがかかるホームページなら、会社の信用・問い合わせ・採用のために
-      働いていてほしいと考えます。
+      ホームページの目的、費用、管理方法を一度整理しませんか。<br />
+      WordPressありきでも、作り直しありきでもなく、
+      御社に本当に必要な構成と運用だけを残します。
     </p>
 
     <a class="button button--inverse" href="#check">
@@ -88,7 +88,7 @@ import heroImage from "../assets/images/hero.webp";
     font-weight: var(--font-weight-heavy);
     line-height: var(--line-height-tight);
     letter-spacing: var(--letter-spacing-tight);
-    max-width: 12ch;
+    max-width: 18ch;
     text-wrap: balance;
     text-shadow: 0 2px 24px rgb(0 0 0 / 0.22);
   }
@@ -122,7 +122,8 @@ import heroImage from "../assets/images/hero.webp";
     }
 
     .hero__title {
-      max-width: 10ch;
+      max-width: none;
+      font-size: clamp(2.25rem, 10.5vw, 3rem);
     }
 
     .hero .button {

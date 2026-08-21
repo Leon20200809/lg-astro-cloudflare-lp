@@ -1,22 +1,235 @@
-## Development
+<!-- LG_CODEX_KIT -->
+# AGENTS.md
 
-When starting the dev server, use background mode:
+このプロジェクトでは **LG流（LazyGenius流）** の開発方針を採用する。
 
+このファイルはCodex戦闘員の**司令書**であり、詳細な思想・標準手順・今回の任務は別ファイルを正本とする。
+
+---
+
+## 1. 出撃前に必ず読む
+
+以下の順番で確認する。
+
+1. `docs/LG_DEVELOPMENT_PHILOSOPHY.md`
+2. `docs/LG_PROJECT_INITIAL_FLOW.md`
+3. `.codex/missions/ACTIVE.md`
+4. 既存コード・設定ファイル・README
+5. 利用可能なテスト・build・lint・type check
+
+存在する文書を読まずに実装を開始しない。
+
+文書が存在しない場合は推測で補完せず、存在しないことを明示する。
+
+---
+
+## 2. 任務の優先順位
+
+判断に迷った場合は、以下の順で優先する。
+
+```text
+ACTIVE.md のGOAL
+↓
+既存仕様・既存挙動
+↓
+LG_DEVELOPMENT_PHILOSOPHY
+↓
+LG_PROJECT_INITIAL_FLOW
+↓
+必要最小限の実装
 ```
-astro dev --background
+
+任務外の改善・リファクタリング・抽象化を勝手に追加しない。
+
+---
+
+## 3. 実装前の確認
+
+コードを書く前に、最低限以下を把握する。
+
+- 今回の目的
+- 現在のデータフロー
+- MVPの境界
+- 変更対象
+- 変更禁止範囲
+- 完成成果物の型・形式
+- 既存機能への影響
+- 検証方法
+
+不明点が実装結果を左右する場合は、推測で進めない。
+
+---
+
+## 4. LG流の実装規律
+
+- 最小で動かす
+- 1機能ずつ縦切りで進める
+- 型を「部隊の納品規格」として扱う
+- フォルダ・ファイルを「責務の住所」として設計する
+- 1ファイル1責務を基本とする
+- 司令官スクリプトへ細かい実装を詰め込まない
+- マジックナンバーや接続設定を実働処理へ散らさない
+- 再利用されていない処理を無理に共通化しない
+- 必要以上の抽象化・汎用化を初手で行わない
+- 既存構造で解決できる場合は大規模変更を避ける
+- 取得できた事実と推論を分ける
+- 不明な値を推測で埋めない
+
+---
+
+## 5. 日本語コメント規律
+
+**実装コード・関数には、機能単位で必ず1行の日本語コメントを書く。**
+
+目的は、コメントだけを追っても処理の流れを把握できる状態にすること。
+
+例：
+
+```ts
+// フォームデータを問い合わせ用の型へ整形する
+const data = createContactData(formData);
+
+// 問い合わせ内容を検証する
+const validationError = validateContact(data);
+
+// 問い合わせ通知メールを送信する
+await sendContactMail(data, env);
 ```
 
-Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
+コメントは「何をしているか」を簡潔に書く。
 
-## Documentation
+コードをそのまま日本語へ翻訳しただけの冗長なコメントや、実装と食い違うコメントは書かない。
 
-Full documentation: https://docs.astro.build
+---
 
-Consult these guides before working on related tasks:
+## 6. 外部サービス
 
-- [Adding pages, dynamic routes, or middleware](https://docs.astro.build/en/guides/routing/)
-- [Working with Astro components](https://docs.astro.build/en/basics/astro-components/)
-- [Using React, Vue, Svelte, or other framework components](https://docs.astro.build/en/guides/framework-components/)
-- [Adding or managing content](https://docs.astro.build/en/guides/content-collections/)
-- [Adding styles or using Tailwind](https://docs.astro.build/en/guides/styling/)
-- [Supporting multiple languages](https://docs.astro.build/en/guides/internationalization/)
+API・DB・クラウド・CLI・メール・ストレージ等を初めて接続する場合は、本処理より先に疎通確認する。
+
+```text
+接続
+↓
+read
+↓
+確認
+↓
+必要ならwrite
+↓
+本処理
+```
+
+エラーが出た場合は推測で修正を重ねず、ログ・HTTPステータス・レスポンスなどの事実から原因を局所化する。
+
+---
+
+## 7. 設定と秘密情報
+
+- APIキー・token・credentialをコードへ直接書かない
+- 秘密情報をGit管理しない
+- 公開して問題ない設定値は設定ファイルで管理する
+- 本番Secretは対象サービスのSecret機構を使用する
+- `.env` / `.dev.vars` 等を使う場合はGit管理対象外であることを確認する
+- 新しい設定ファイルを導入した場合、その役割を理解してから使う
+
+---
+
+## 8. CLIと自動化
+
+新しいCLI操作は、可能な限り最初に手動で意味を確認する。
+
+```text
+手動で成功
+↓
+意味を理解
+↓
+script化
+↓
+必要ならCI/CD
+```
+
+自動化そのものを目的にしない。
+
+---
+
+## 9. Git
+
+- 次の未知領域へ入る前をセーブポイントと考える
+- 任務と無関係な差分を混ぜない
+- ユーザーの明示的な指示がない限り `git commit` / `git push` は実行しない
+- 破壊的なGit操作を勝手に実行しない
+
+---
+
+## 10. 完了前の検証
+
+「コードを書いた」で任務完了にしない。
+
+プロジェクトで利用可能なものを確認し、必要に応じて実行する。
+
+- build
+- test
+- lint
+- type check
+- `git diff --check`
+- 主要機能の手動確認
+
+利用できない検証は、実施したふりをせず「未実施」と理由を報告する。
+
+共通の完了基準として、利用可能であればLG Codex Kitの `DONE.md` も確認する。
+
+---
+
+## 11. 完了報告
+
+完了報告は簡潔に、最低限以下を含める。
+
+- 変更したファイル
+- 実装した内容
+- 変更しなかった重要箇所
+- 検証結果
+- 未実施項目と理由
+- 注意点・次に確認すべきこと
+
+---
+
+## 12. 判断基準
+
+迷ったらこの順で判断する。
+
+```text
+動くか？
+↓
+事実を確認できているか？
+↓
+責務は分かれているか？
+↓
+型でGOALが見えるか？
+↓
+テストできるか？
+↓
+Gitで戻せるか？
+↓
+その後に自動化・汎用化
+```
+
+---
+
+## 13. スローガン
+
+**Laziness / Impatience / Hubris**
+
+手作業を減らし、早く動かし、保守できる形にする。
+
+---
+
+## 既存プロジェクト固有の指示
+
+`.codex/context/ORIGINAL_AGENTS.md` が存在する場合は、
+実装開始前に必ず読むこと。
+
+これはAstro・フレームワーク・既存プロジェクト等が持っていた
+元の `AGENTS.md` を保存したものである。
+
+LG流の開発方針と矛盾しない既存プロジェクト固有ルールは尊重する。
+
+矛盾・競合がある場合は推測で処理せず、内容を確認してから判断する。

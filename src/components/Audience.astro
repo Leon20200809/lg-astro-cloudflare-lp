@@ -1,0 +1,237 @@
+<section class="section audience" aria-labelledby="audience-title">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">担当者の方へ</p>
+
+      <h2 id="audience-title" class="section-title">
+        こんな業務を、<br />
+        本来の仕事と兼任していませんか？
+      </h2>
+
+      <p class="section-lead">
+        Web専任者がいない従業員10〜100名程度の会社で、
+        ホームページの管理まで引き受けている方からのご相談を想定しています。
+      </p>
+    </div>
+
+    <ul class="audience__list">
+      <li class="audience__item">
+        <article>
+          <p class="audience__role">総務・管理部門の方</p>
+          <h3>制作会社との連絡も、サーバーの通知対応も自分の仕事になっている</h3>
+          <p>
+            ホームページ更新、採用ページ修正、ドメイン管理、問い合わせメール管理まで、
+            本来の業務と並行して担当している。
+          </p>
+          <p class="audience__value">
+            <span aria-hidden="true">→</span>
+            Web管理の仕事そのものを減らせないか整理します。
+          </p>
+        </article>
+      </li>
+
+      <li class="audience__item">
+        <article>
+          <p class="audience__role">一人情シス・社内SEの方</p>
+          <h3>PCやSaaSに加えて、WordPressまで一人で管理している</h3>
+          <p>
+            ネットワーク、メール、DNS、Webサーバー、制作会社対応まで抱え、
+            自分にしか分からない管理項目が増えている。
+          </p>
+          <p class="audience__value">
+            <span aria-hidden="true">→</span>
+            管理対象を減らし、属人化しにくい構成へ整理します。
+          </p>
+        </article>
+      </li>
+
+      <li class="audience__item">
+        <article>
+          <p class="audience__role">営業企画・新規事業担当の方</p>
+          <h3>施策ごとのLPに、毎回大きな仕組みを用意するのが重い</h3>
+          <p>
+            新規サービスや広告施策を進めたい一方で、制作会社への修正依頼や、
+            施策終了後のサーバー・CMS管理が負担になっている。
+          </p>
+          <p class="audience__value">
+            <span aria-hidden="true">→</span>
+            小さく作り、公開・検証・終了後の管理まで軽くします。
+          </p>
+        </article>
+      </li>
+
+      <li class="audience__item">
+        <article>
+          <p class="audience__role">人事・採用担当の方</p>
+          <h3>求人媒体だけでなく、採用ページや会社紹介まで任されている</h3>
+          <p>
+            求職者へ伝えたい情報はあるものの、古い会社情報や更新しにくいページを、
+            どこから直せばよいか分からない。
+          </p>
+          <p class="audience__value">
+            <span aria-hidden="true">→</span>
+            求職者が会社を調べたときに、不安を感じない状態へ整えます。
+          </p>
+        </article>
+      </li>
+    </ul>
+
+    <aside class="audience__decision">
+      <div>
+        <p class="audience__decision-label">経営者・管理責任者の方へ</p>
+        <h3>何に費用がかかり、誰が管理しているか説明できますか？</h3>
+      </div>
+      <p>
+        現在の目的・構成・固定費・外注範囲を可視化し、
+        必要なものだけを残します。成果不明な費用や属人化のリスクを、
+        技術を選ぶ前に整理します。
+      </p>
+    </aside>
+
+    <p class="audience__fit">
+      建設・設備・製造・不動産・士業・コンサルティングなど、
+      会社案内・サービス紹介・採用・実績掲載・問い合わせが中心の
+      地域密着型BtoB企業と特に相性のよいサービスです。
+    </p>
+  </div>
+</section>
+
+<style>
+  .audience {
+    color: var(--color-primary-text);
+    background: var(--color-primary);
+  }
+
+  .audience .section-label {
+    color: #8fc2ff;
+  }
+
+  .audience .section-lead {
+    color: rgb(255 255 255 / 0.7);
+  }
+
+  .audience__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    max-width: var(--content-width-lg);
+    margin: var(--space-16) auto 0;
+    padding: 1px;
+    background: rgb(255 255 255 / 0.14);
+    list-style: none;
+  }
+
+  .audience__item {
+    min-width: 0;
+    background: #101f34;
+  }
+
+  .audience__item article {
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+    padding: var(--space-10);
+  }
+
+  .audience__role,
+  .audience__decision-label {
+    margin: 0;
+    color: #8fc2ff;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.04em;
+  }
+
+  .audience__item h3 {
+    margin: var(--space-4) 0 0;
+    font-size: var(--font-size-xl);
+    line-height: 1.55;
+  }
+
+  .audience__item article > p:not([class]) {
+    margin: var(--space-5) 0 0;
+    color: rgb(255 255 255 / 0.68);
+    font-size: var(--font-size-sm);
+  }
+
+  .audience__value {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-3);
+    margin: auto 0 0;
+    padding-top: var(--space-6);
+    color: var(--color-primary-text);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .audience__value span {
+    color: #8fc2ff;
+  }
+
+  .audience__decision {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: var(--space-10);
+    align-items: center;
+    max-width: var(--content-width-lg);
+    margin: var(--space-10) auto 0;
+    padding: var(--space-8) var(--space-10);
+    border-left: 3px solid #8fc2ff;
+    color: var(--color-text);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .audience__decision h3 {
+    margin: var(--space-3) 0 0;
+    font-size: var(--font-size-xl);
+    line-height: var(--line-height-heading);
+  }
+
+  .audience__decision > p {
+    margin: 0;
+    color: var(--color-text-muted);
+  }
+
+  .audience__fit {
+    max-width: var(--content-width-md);
+    margin: var(--space-8) auto 0;
+    color: rgb(255 255 255 / 0.58);
+    font-size: var(--font-size-sm);
+    text-align: center;
+  }
+
+  @media (max-width: 48rem) {
+    .audience__list,
+    .audience__decision {
+      grid-template-columns: 1fr;
+    }
+
+    .audience__item article {
+      padding: var(--space-8);
+    }
+
+    .audience__decision {
+      gap: var(--space-5);
+    }
+  }
+
+  @media (max-width: 40rem) {
+    .audience__list {
+      margin-top: var(--space-12);
+    }
+
+    .audience__item article,
+    .audience__decision {
+      padding: var(--space-6);
+    }
+
+    .audience__item h3 {
+      font-size: var(--font-size-lg);
+    }
+
+    .audience__fit {
+      text-align: left;
+    }
+  }
+</style>

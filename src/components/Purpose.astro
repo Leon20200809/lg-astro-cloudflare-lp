@@ -14,11 +14,17 @@
       </p>
     </div>
 
+    <!-- ホームページの役割を、番号・アイコン・名称の順で示す -->
     <div class="purpose__grid">
       <article class="purpose-card">
         <div class="purpose-card__top">
-          <span class="purpose-card__number">01</span>
-          <span class="purpose-card__icon" aria-hidden="true">✓</span>
+          <span class="purpose-card__number"><small>ROLE</small><strong>01</strong></span>
+          <span class="purpose-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M12 3 19 6v5c0 4.6-2.8 8.1-7 10-4.2-1.9-7-5.4-7-10V6l7-3Z" />
+              <path d="m9 12 2 2 4-4" />
+            </svg>
+          </span>
         </div>
 
         <h3>信用</h3>
@@ -31,8 +37,13 @@
 
       <article class="purpose-card">
         <div class="purpose-card__top">
-          <span class="purpose-card__number">02</span>
-          <span class="purpose-card__icon" aria-hidden="true">→</span>
+          <span class="purpose-card__number"><small>ROLE</small><strong>02</strong></span>
+          <span class="purpose-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M4 5h16v11H8l-4 4V5Z" />
+              <path d="M8 9h8M8 12h5" />
+            </svg>
+          </span>
         </div>
 
         <h3>問い合わせ</h3>
@@ -45,8 +56,13 @@
 
       <article class="purpose-card">
         <div class="purpose-card__top">
-          <span class="purpose-card__number">03</span>
-          <span class="purpose-card__icon" aria-hidden="true">+</span>
+          <span class="purpose-card__number"><small>ROLE</small><strong>03</strong></span>
+          <span class="purpose-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <circle cx="12" cy="8" r="3" />
+              <path d="M5.5 20c.5-4 2.7-6 6.5-6s6 2 6.5 6M18 7h4M20 5v4" />
+            </svg>
+          </span>
         </div>
 
         <h3>採用</h3>
@@ -59,8 +75,13 @@
 
       <article class="purpose-card">
         <div class="purpose-card__top">
-          <span class="purpose-card__number">04</span>
-          <span class="purpose-card__icon" aria-hidden="true">i</span>
+          <span class="purpose-card__number"><small>ROLE</small><strong>04</strong></span>
+          <span class="purpose-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M6 3h9l3 3v15H6V3Z" />
+              <path d="M14 3v4h4M9 12h6M9 16h6" />
+            </svg>
+          </span>
         </div>
 
         <h3>情報提供</h3>
@@ -90,18 +111,20 @@
   .purpose__grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1px;
+    gap: var(--space-5);
     max-width: var(--content-width-lg);
     margin: var(--space-16) auto 0;
   }
 
   .purpose-card {
     position: relative;
-    min-height: 18rem;
+    min-height: 20rem;
     padding: var(--space-10);
-    border: 0;
+    border: var(--border-default);
+    border-top: 3px solid var(--color-accent);
+    border-radius: var(--radius-lg);
     background: var(--color-surface);
-    box-shadow: 0 0 0 1px var(--color-border);
+    box-shadow: var(--shadow-sm);
     transition:
       border-color var(--transition-base),
       box-shadow var(--transition-base),
@@ -110,36 +133,59 @@
 
   .purpose-card:hover {
     z-index: 1;
-    box-shadow: 0 0 0 1px var(--color-border-strong), var(--shadow-md);
+    border-color: var(--color-border-strong);
+    border-top-color: var(--color-accent);
+    box-shadow: var(--shadow-md);
     transform: translateY(-1px);
   }
 
   .purpose-card__top {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
   }
 
   .purpose-card__number {
+    display: grid;
+    gap: var(--space-1);
     color: var(--color-accent);
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-heavy);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+
+  .purpose-card__number small {
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.12em;
+  }
+
+  .purpose-card__number strong {
+    font-size: 3rem;
+    font-weight: var(--font-weight-heavy);
   }
 
   .purpose-card__icon {
     display: grid;
-    width: 2.75rem;
-    height: 2.75rem;
+    width: 4rem;
+    height: 4rem;
     place-items: center;
-    border-radius: var(--radius-full);
+    border: 1px solid rgb(23 105 210 / 0.12);
+    border-radius: var(--radius-lg);
     color: var(--color-accent);
     background: var(--color-accent-soft);
-    font-size: var(--font-size-lg);
-    font-weight: var(--font-weight-heavy);
+  }
+
+  .purpose-card__icon svg {
+    width: 2rem;
+    height: 2rem;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
   }
 
   .purpose-card h3 {
-    margin: var(--space-8) 0 var(--space-3);
+    margin: var(--space-10) 0 var(--space-3);
     font-size: var(--font-size-2xl);
     line-height: var(--line-height-heading);
   }
@@ -192,7 +238,12 @@
     }
 
     .purpose-card h3 {
-      margin-top: var(--space-6);
+      margin-top: var(--space-8);
+    }
+
+    .purpose-card__icon {
+      width: 3.5rem;
+      height: 3.5rem;
     }
 
     .purpose__summary {

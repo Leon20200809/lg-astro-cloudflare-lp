@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "test": "wrangler deploy --dry-run --outdir .test-dist && node --test tests/contact-worker.test.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },

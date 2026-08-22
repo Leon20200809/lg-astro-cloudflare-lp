@@ -1,3 +1,11 @@
+---
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
+
+if (!turnstileSiteKey) {
+  throw new Error("PUBLIC_TURNSTILE_SITE_KEY is required.");
+}
+---
+
 <section id="check" class="section cta">
   <div class="container">
     <div class="cta__inner">
@@ -172,6 +180,16 @@
             />
           </div>
 
+          <!-- 問い合わせ送信前にブラウザーが自動操作でないことを確認する -->
+          <div class="contact__turnstile">
+            <div
+              class="cf-turnstile"
+              data-sitekey={turnstileSiteKey}
+              data-theme="light"
+              data-language="ja"
+            ></div>
+          </div>
+
           <div class="contact__submit">
             <button
               class="button button--primary"
@@ -196,6 +214,13 @@
     </div>
   </div>
 </section>
+
+<script
+  is:inline
+  src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+  async
+  defer
+></script>
 
 <script>
   const form = document.querySelector<HTMLFormElement>(
@@ -256,6 +281,12 @@
             ? error.message
             : "送信に失敗しました。時間をおいて再度お試しください。";
       } finally {
+        // 使用済みトークンを破棄し、次回送信用のチャレンジへ戻す
+        const turnstileWindow = window as Window & {
+          turnstile?: { reset: () => void };
+        };
+
+        turnstileWindow.turnstile?.reset();
         button.disabled = false;
         button.innerHTML = originalText;
       }
@@ -395,6 +426,7 @@
   }
 
   .contact__field--full,
+  .contact__turnstile,
   .contact__submit {
     grid-column: 1 / -1;
   }
@@ -456,6 +488,14 @@
     overflow: hidden;
   }
 
+  .contact__turnstile {
+    display: flex;
+    min-height: 4.1rem;
+    align-items: center;
+    justify-content: center;
+    margin-top: var(--space-2);
+  }
+
   .contact__submit {
     margin-top: var(--space-6);
     text-align: center;
@@ -496,6 +536,7 @@
     }
 
     .contact__field--full,
+    .contact__turnstile,
     .contact__submit {
       grid-column: auto;
     }

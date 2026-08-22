@@ -1,6 +1,7 @@
 import type { ContactData } from "../types/contact";
 import type { Env } from "../types/env";
 import { sendContactMail } from "../services/resend";
+import { verifyTurnstile } from "../services/turnstile";
 import { jsonResponse } from "../utils/response";
 import { validateContact } from "../validators/contact";
 
@@ -61,6 +62,31 @@ export const handleContact = async (
         message: validationError,
       },
       400,
+    );
+  }
+
+  // Turnstileトークンを検証し、失敗時はメール送信へ進めない
+  try {
+    const turnstileToken = getField(formData, "cf-turnstile-response");
+    const remoteIp = request.headers.get("CF-Connecting-IP") ?? "";
+    const isHuman = await verifyTurnstile(turnstileToken, remoteIp, env);
+
+    if (!isHuman) {
+      return jsonResponse(
+        {
+          message: "セキュリティ確認に失敗しました。もう一度お試しください。",
+        },
+        400,
+      );
+    }
+  } catch (error) {
+    console.error("Turnstile verification failed:", error);
+
+    return jsonResponse(
+      {
+        message: "セキュリティ確認を完了できませんでした。時間をおいて再度お試しください。",
+      },
+      503,
     );
   }
 

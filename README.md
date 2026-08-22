@@ -43,3 +43,14 @@ Resend API
 ↓
 メール受信
 ```
+
+### Turnstile設定
+
+問い合わせフォームはCloudflare Turnstileで自動送信を検証します。
+
+- 公開Site Keyは、Astroのbuild環境へ`PUBLIC_TURNSTILE_SITE_KEY`として設定する
+- Secret Keyは、`wrangler secret put TURNSTILE_SECRET_KEY`でWorker Secretへ登録する
+- ローカル確認では`.env`へSite Key、`.dev.vars`へSecret Keyを設定する
+- `.env`と`.dev.vars`はGit管理しない
+
+ローカルや自動テストでは、Cloudflare公式のテストキーを使用できます。本番キーをソースコードへ直接記載しないでください。
